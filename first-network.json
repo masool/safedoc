@@ -1,0 +1,59 @@
+{
+	"name": "veritable-network",
+	"version": "1.0.0",
+	"client": {
+		"tlsEnable": true,
+		"adminUser": "admin",
+		"adminPassword": "adminpw",
+		"enableAuthentication": false,
+		"organization": "jea1MSP",
+		"connection": {
+			"timeout": {
+				"peer": {
+					"endorser": "300"
+				},
+				"orderer": "300"
+			}
+		}
+	},
+	"channels": {
+		"veritable-channel": {
+			"peers": {
+				"peer0.jea1.jead.com": {}
+			},
+			"connection": {
+				"timeout": {
+					"peer": {
+						"endorser": "6000",
+						"eventHub": "6000",
+						"eventReg": "6000"
+					}
+				}
+			}
+		}
+	},
+	"organizations": {
+		"jea11MSP": {
+			"mspid": "jea1MSP",
+			"fullpath": true,
+			"adminPrivateKey": {
+				"path": "/tmp/crypto/peerOrganizations/jea1.jead.com/users/Admin@jea1.jead.com/msp/keystore/ca2baed1ff8945702fffc4d887a6bd020ce1d5e0fdf6cc08bed1b75021e924a8_sk"
+			},
+			"signedCert": {
+				"path": "/tmp/crypto/peerOrganizations/jea1.jead.com/users/Admin@jea1.jead.com/msp/signcerts/Admin@jea1.jead.com-cert.pem"
+			}
+		}
+	},
+	"peers": {
+		"peer0.jea1.jead.com": {
+			"tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/jea1.jead.com/peers/peer0.jea1.jead.com/tls/ca.crt"
+			},
+			"url": "grpcs://peer0.jea1.jead.com:7051",
+			"eventUrl": "grpcs://peer0.jea1.jead.com:7053",
+			"grpcOptions": {
+				"ssl-target-name-override": "peer0.jea1.jead.com"
+			}
+		}
+	}
+}
